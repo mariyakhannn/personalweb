@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mariya Khan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,650,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        :root {
+            --primary: #ffffff;
+            --secondary: #000000;
+            --accent: #ffffe3;
+            --text: #e6e6e6;
+            --hover: #FFECB3;
+            --navy: #0a0a0aff;
+            --light-navy: #292524;
+            --border-radius: 16px;
+            --section-spacing: 3rem;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'General Sans', sans-serif;
+            background-color: var(--navy);
+            color: var(--text);
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Side Navigation */
+        .side-nav {
+            position: fixed;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.3s ease;
+        }
+
+        .nav-item:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            background: transparent;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+        }
+
+        .nav-item.active .nav-dot {
+            background: var(--accent);
+        }
+
+        .nav-text {
+            font-size: 0.7rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-item:hover .nav-text {
+            opacity: 1;
+        }
+
+        /* Header */
+        header {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--navy);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: var(--section-spacing);
+            padding-top: 100px;
+            width: 100%;
+        }
+
+        .header-content {
+            max-width: 95%;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .header-content::before {
+            content: '< />';
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            color: var(--accent);
+            opacity: 0.3;
+            font-weight: 400;
+            font-family: 'General Sans', sans-serif;
+        }
+
+        .typing-container {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            display: inline-block;
+            font-family: 'General Sans', sans-serif;
+        }
+
+        .typing-text {
+            border-right: 0.1em solid var(--accent);
+            font-family: 'General Sans', sans-serif;
+            white-space: nowrap;
+            overflow: hidden;
+            padding-right: 0.1em;
+        }
+
+        .typing-text.typing {
+            animation: typing 3.5s steps(20, end),
+                       blink-caret 1.2s ease-in-out infinite;
+            width: 0;
+        }
+
+        .typing-text.finished {
+            width: 100%;
+            animation: blink-caret 1.2s ease-in-out infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            0%, 100% { border-color: transparent; }
+            50% { border-color: var(--accent); }
+        }
+
+        .header-content h2 {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            font-weight: 650;
+            max-width: 60%; /* Reduced from 95% to 70% */
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            font-family: 'General Sans', sans-serif;
+        }
+
+        .header-content p {
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            color: var(--text);
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            hyphens: auto;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            padding: 0.6rem 1.1rem;
+            border: 2px solid var(--accent);
+            border-radius: var(--border-radius);
+            color: var(--accent);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.65rem;
+            font-weight: 400;
+        }
+
+        .social-btn:hover {
+            background: rgba(255, 236, 179, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px rgba(255, 236, 179, 0.3);
+        }
+
+        .social-btn i {
+            font-size: 0.8rem;
+        }
+
+        /* Content Sections */
+        .content-section {
+            width: 100%;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background: var(--light-navy);
+            border-radius: var(--border-radius);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: block;
+        }
+
+        .content-section h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-family: 'General Sans', sans-serif;
+            font-weight: 650;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .content-card {
+            background: var(--navy);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            min-width: 300px;
+            text-align: left;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 236, 179, 0.1);
+        }
+
+        .card-image {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+            min-height: 50px;
+        }
+
+        .card-title {
+            color: var(--accent);
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0;
+            flex: 1;
+            padding-right: 1rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            align-self: flex-start;
+        }
+
+        .card-description {
+            color: var(--text);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .card-tools {
+            color: #b3b3b3;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            text-align: left;
+        }
+
+        .project-link {
+            color: var(--accent);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .project-link:hover {
+            transform: translateY(-2px);
+        }
+
+        .card-expand {
+            color: var(--accent);
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .card-expand a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: var(--light-navy);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: var(--accent);
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .content-section {
+                width: 95%;
+                padding: 1rem;
+            }
+            
+            .content-card {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="side-nav">
+        <a href="#home" class="nav-item active">
+            <div class="nav-dot"></div>
+            <span class="nav-text">Home</span>
+        </a>
+        <a href="#projects" class="nav-item">
+            <div class="nav-dot"></div>
+            <span class="nav-text">Projects</span>
+        </a>
+        <a href="#articles" class="nav-item">
+            <div class="nav-dot"></div>
+            <span class="nav-text">Articles</span>
+        </a>
+        <a href="#slides" class="nav-item">
+            <div class="nav-dot"></div>
+            <span class="nav-text">Slides</span>
+        </a>
+    </nav>
+
+    <header id="home">
+        <div class="container">
+            <div class="header-content animate">
+                <div class="typing-container">
+                    <span class="typing-text typing">hi, Mariya here. </span>
+                </div>
+                <h2>Constantly Learning Through Failure </h2>
+                <p style="text-align: center;"> I'm a 16-year-old builder fascinated by how things work and always obsessed with the small details. Currently learning about systems theory and generative AI.</p>
+                <div class="social-links">
+                    <a href="mailto:mariya.k2022@gmail.com" class="social-btn">
+                        <i class="fas fa-envelope"></i> Email
+                    </a>
+                    <a href="https://github.com/mariyakhannn" class="social-btn">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/mariyakhan-/" class="social-btn">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="https://medium.com/@mariya.k2022" class="social-btn">
+                        <i class="fab fa-medium"></i> Medium
+                    </a>
+                </div>
+            </div>
+
+            <div id="projects" class="content-section" data-aos="fade-up">
+                <h3>Past Projects</h3>
+                <div class="content-grid">
+                    <div class="content-card">
+                        <img src="C:\Users\mariy\OneDrive\Desktop\tks\Screenshot 2025-02-11 145202.png" alt="Project 1" class="card-image">
+                        <div class="card-header">
+                            <h4 class="card-title">Using Deep Learning for Image Colorization</h4>
+                            <div class="project-links">
+                                <a href="https://github.com/mariyakhannn/imagecolorizer" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://medium.com/datadriveninvestor/deep-learning-techniques-for-image-colorization-a-step-by-step-guide-66c5a4504877" class="project-link">
+                                    <i class="fas fa-file-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <p class="card-description">Deep learning project using a pre-trained CNN in Caffe to colorize images by treating colorization as a classification task in the LAB color space, improving accuracy over traditional methods.</p>
+                        <p class="card-tools">Python • NumPy • OpenCV • Caffe • CIELAB </p>
+                    </div>
+                    <div class="content-card">
+                        <img src="C:\Users\mariy\OneDrive\Desktop\tks\REP2\Screenshot 2025-03-11 023817.png" alt="Project 2" class="card-image">
+                        <div class="card-header">
+                            <h4 class="card-title">Mathematical Foundations of Neural Networks for MNIST Classification</h4>
+                            <div class="project-links">
+                                <a href="https://github.com/mariyakhannn/MNIST_v2" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://medium.com/towards-artificial-intelligence/mathematics-of-neural-networks-0d151b5a557e" class="project-link">
+                                    <i class="fas fa-file-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <p class="card-description">A neural network built from scratch using NumPy, without any ML frameworks. This project also explores the core math behind neural networks such as matrix calculus, and applies the model to classify digits from the MNIST dataset.</p>
+                        <p class="card-tools">Python • Matplotlib • NumPy • Pandas </p>
+                    </div>
+                    <div class="content-card">
+                        <img src="project3.jpg" alt="Project 3" class="card-image">
+                        <div class="card-header">
+                            <h4 class="card-title">Project 3</h4>
+                            <div class="project-links">
+                                <a href="#" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" class="project-link">
+                                    <i class="fas fa-file-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <p class="card-description">Brief description of project 3</p>
+                        <p class="card-tools">Tool 1 • Tool 2 • Tool 3</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="articles" class="content-section" data-aos="fade-up">
+                <h3>Featured Articles</h3>
+                <div class="content-grid">
+                    <div class="content-card">
+                        <img src="C:\Users\mariy\OneDrive\Desktop\tks\REP2\Screenshot 2025-03-09 013630.png" alt="Article 1" class="card-image">
+                        <h4 class="card-title">Mathematical Analysis of Neural Networks for MNIST</h4>
+                        <p class="card-description">Implementing MNIST Classification with NumPy and Matrix Calculus</p>
+                        <div class="card-expand">
+                            <i class="fas fa-pencil-alt"></i> <a href="https://medium.com/towards-artificial-intelligence/mathematics-of-neural-networks-0d151b5a557e">View Here</a>
+                        </div>
+                    </div>
+                    <div class="content-card">
+                        <img src="C:\Users\mariy\OneDrive\Desktop\tks\1_Qio_8UE1uZx_IUpJLzMAtg.png" alt="Article 2" class="card-image">
+                        <h4 class="card-title">Deep Learning Techniques for Image Colorization: A Step-by-Step Guide</h4>
+                        <p class="card-description">Colorizing Grayscale Images Using Caffe and Deep Learning Models</p>
+                        <div class="card-expand">
+                            <i class="fas fa-pencil-alt"></i> <a href="https://medium.com/datadriveninvestor/deep-learning-techniques-for-image-colorization-a-step-by-step-guide-66c5a4504877">View Here</a>
+                        </div>
+                    </div>
+                    <div class="content-card">
+                        <img src="C:\Users\mariy\OneDrive\Desktop\tks\0_81CBRN3kzERvlMbN.webp" alt="Article 3" class="card-image">
+                        <h4 class="card-title"> Diffusion Models: How AI Turns Noise Into Art</h4>
+                        <p class="card-description">Exploring Denoising Diffusion Probabilistic Models (DDPMs)</p>
+                        <div class="card-expand">
+                            <i class="fas fa-pencil-alt"></i> <a href="https://medium.com/@mariya.k2022/diffusion-models-how-ai-turns-noise-into-art-3111629ab641">View Here</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="slides" class="content-section" data-aos="fade-up">
+                <h3>Slide Decks</h3>
+                <div class="content-grid">
+                    <div class="content-card">
+                        <img src="C:\Users\mariy\OneDrive\Desktop\tks\Screenshot 2025-03-29 031143.png" alt="Saving $300M+ Globally With Optimized Model Deployment | Microsoft x TKS" class="card-image">
+                        <h4 class="card-title">Saving $300M+ Globally With Optimized Model Deployment | Microsoft x TKS</h4>
+                        <p class="card-description">Developed a proposal for an acceleration framework that optimizes ONNX model deployment on hardware, reducing inference costs by up to 40%, and potentially saving $300M annually.</p>
+                        <div class="card-expand">
+                            <i class="fab fa-google-drive"></i> <a href="https://drive.google.com/file/d/15_trLMHhoaNAgsSRXb8dTSZVtYZz7v-B/view?usp=sharing">View Slides</a>
+                        </div>
+                    </div>
+                    <div class="content-card">
+                        <img src= "C:\Users\mariy\OneDrive\Desktop\tks\Screenshot 2025-02-02 222647.png" alt="Slide Deck 2" class="card-image">
+                        <h4 class="card-title">The $2.3 Billion Cost of IKEA's Communication Breakdown | IKEA x TKS</h4>
+                        <p class="card-description">Developed a proposal for an internal communications software, Axonify and FIKA, projected to increase global revenue by $13.5M at IKEA.</p>
+                        <div class="card-expand">
+                            <i class="fab fa-google-drive"></i> <a href="https://drive.google.com/file/d/1M9RS47WuhLT025a7MpIlNrRLWk_KcxT1/view?usp=sharing">View Slides</a>
+                        </div>
+                    </div>
+                    <div class="content-card">
+                        <img src="C:\Users\mariy\OneDrive\Desktop\tks\Screenshot 2025-02-11 134354.png" alt="Slide Deck 3" class="card-image">
+                        <h4 class="card-title">Reducing Medical Errors with Programmable Materials in MedTech</h4>
+                        <p class="card-description">Pulse oximeters are 3x more likely to give falsely high readings for people with darker skin, contributing to healthcare disparities. Plasmonic materials can improve accuracy by its property of scattering light to penetrate the skin. Best Overall @TKS Toronto Hackathon</p>
+                        <div class="card-expand">
+                            <i class="fab fa-google-drive"></i> <a href="https://drive.google.com/file/d/1HgxFoK0IxDJzjaLt-i4ggyDm_TUCfwDC/view?usp=sharing">View Slides</a>
+                        </div>
+                    </div>
+                    <div class="content-card">
+                        <img src= "C:\Users\mariy\OneDrive\Desktop\tks\Screenshot 2025-02-11 135502.png" alt="Slide Deck 4" class="card-image">
+                        <h4 class="card-title">Data Storage Solution - DNA</h4>
+                        <p class="card-description">Data storage costs have surged by 205% over the past five years. DNA storage is a promising energy storage solution, as it is less expensive, more energy-efficient and longer lasting. 
+                            Top 5  @TKS Global Hackathon</p>
+                        <div class="card-expand">
+                            <i class="fab fa-google-drive"></i> <a href="https://drive.google.com/file/d/1MaPHf_rvgRRe0HVa9YWOAJjTQS8bkyuY/view?usp=sharing">View Slides</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Check if this is the first visit
+        const isFirstVisit = !localStorage.getItem('hasVisited');
+        const typingText = document.querySelector('.typing-text');
+        
+        if (!isFirstVisit) {
+            typingText.classList.remove('typing');
+            typingText.classList.add('finished');
+        }
+        
+        // Set the flag for future visits
+        localStorage.setItem('hasVisited', 'true');
+
+        // Modal functionality
+        function openModal(id) {
+            const modal = document.getElementById('modal');
+            const modalContent = document.getElementById('modal-content');
+            modal.style.display = 'flex';
+            // Here you can load the content based on the id
+            modalContent.innerHTML = `<h2>Content for ${id}</h2>`;
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Update active nav item based on scroll position
+        const sections = document.querySelectorAll('section');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 60) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').slice(1) === current) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
