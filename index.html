@@ -173,7 +173,7 @@
             color: var(--accent);
             margin-bottom: 2rem;
             font-weight: 650;
-            max-width: 60%; /* Reduced from 95% to 70% */
+            max-width: 60%;
             text-align: center;
             margin-left: auto;
             margin-right: auto;
@@ -307,10 +307,19 @@
         }
 
         .card-tools {
-            color: #b3b3b3;
-            font-size: 0.8rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
             margin-top: 0.5rem;
-            text-align: left;
+        }
+
+        .tool-tag {
+            color: var(--text);
+            font-size: 0.8rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            display: inline-block;
         }
 
         .project-link {
@@ -448,7 +457,13 @@
                             </div>
                         </div>
                         <p class="card-description">Deep learning project using a pre-trained CNN in Caffe to colorize images by treating it as a classification task in the LAB color space, improving accuracy over traditional methods.</p>
-                        <p class="card-tools">Python • NumPy • OpenCV • Caffe • CIELAB </p>
+                        <div class="card-tools">
+                            <span class="tool-tag">Python</span>
+                            <span class="tool-tag">NumPy</span>
+                            <span class="tool-tag">OpenCV</span>
+                            <span class="tool-tag">Caffe</span>
+                            <span class="tool-tag">CIELAB</span>
+                        </div>
                     </div>
                     <div class="content-card">
                         <img src="images/Screenshot 2025-03-11 023817.png" alt="Project 2" class="card-image">
@@ -464,10 +479,15 @@
                             </div>
                         </div>
                         <p class="card-description">A neural network built from scratch using NumPy, without ML frameworks. This project also explores the core math and matrix calculus behind neural networks, and also applies the model to classify digits from the MNIST dataset.</p>
-                        <p class="card-tools">Python • Matplotlib • NumPy • Pandas </p>
+                        <div class="card-tools">
+                            <span class="tool-tag">Python</span>
+                            <span class="tool-tag">Matplotlib</span>
+                            <span class="tool-tag">NumPy</span>
+                            <span class="tool-tag">Pandas</span>
+                        </div>
                     </div>
                     <div class="content-card">
-                        <img src="project3.jpg" alt="Project 3" class="card-image">
+                        <i class="fas fa-image fa-5x" style="color: #666; display: block; text-align: center; margin: 20px 0;"></i>
                         <div class="card-header">
                             <h4 class="card-title">Project 3</h4>
                             <div class="project-links">
@@ -480,7 +500,11 @@
                             </div>
                         </div>
                         <p class="card-description">[🚧 In-progress]</p>
-                        <p class="card-tools">Tool 1 • Tool 2 • Tool 3</p>
+                        <div class="card-tools">
+                            <span class="tool-tag">Tool 1</span>
+                            <span class="tool-tag">Tool 2</span>
+                            <span class="tool-tag">Tool 3</span>
+                        </div>
                     </div>
                 </div>
             </div>
