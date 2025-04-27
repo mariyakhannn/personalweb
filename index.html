@@ -14,7 +14,7 @@
         :root {
             --primary: #ffffff;
             --secondary: #000000;
-            --accent: #ffffe3;
+            --accent: #fff9cc;
             --text: #e6e6e6;
             --hover: #FFECB3;
             --navy: #0a0a0aff;
@@ -74,15 +74,15 @@
         }
 
         .nav-dot {
-            width: 12px;
-            height: 12px;
+            width: 15px; /* Increased from 12px */
+            height: 15px; /* Increased from 12px */
             background: transparent;
             border: 2px solid var(--accent);
             border-radius: 50%;
         }
 
         .nav-item.active .nav-dot {
-            background: var(--accent);
+            background: var(--accent); /* Changed to accent color (yellow) */
         }
 
         .nav-text {
@@ -599,7 +599,7 @@
     </div>
 
     <footer>
-        Built by Mariya Khan © 2025
+        Hosted on Vercel. © 2025 Mariya Khan. All rights reserved.
     </footer>
 
     <script>
@@ -644,12 +644,13 @@
         }
 
         // Update active nav item based on scroll position
-        const sections = document.querySelectorAll('section');
+        const sections = document.querySelectorAll('.content-section, header');
         window.addEventListener('scroll', () => {
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                if (scrollY >= sectionTop - 60) {
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - sectionHeight/3)) {
                     current = section.getAttribute('id');
                 }
             });
